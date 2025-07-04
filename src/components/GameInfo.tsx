@@ -18,9 +18,9 @@ const GameInfo: React.FC = () => {
         ) : (
           <span>
             {gameMode === 'single' && currentPlayer === 'O' ? (
-              "AI's turn"
+              "AI turn"
             ) : (
-              `Player ${currentPlayer}'s turn`
+              `Player ${currentPlayer} turn`
             )}
           </span>
         )}

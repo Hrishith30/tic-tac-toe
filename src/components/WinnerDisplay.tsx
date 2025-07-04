@@ -6,17 +6,7 @@ interface WinnerDisplayProps {
   winner: Player | null;
 }
 
-interface ConfettiPiece {
-  key: string;
-  left: string;
-  top: string;
-  width: string;
-  height: string;
-  color: string;
-  transform: string;
-  opacity: number;
-  animation: string;
-}
+// Removed unused interface
 
 const WinnerDisplay: React.FC<WinnerDisplayProps> = ({ winner }) => {
   const [showAnimation, setShowAnimation] = useState(false);

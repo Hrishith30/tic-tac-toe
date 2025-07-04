@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 
 interface FireworksProps {
   isVisible: boolean;
@@ -22,7 +22,7 @@ const Fireworks: React.FC<FireworksProps> = ({ isVisible }) => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Function to create a new burst of fireworks
-  const createFireworksBurst = () => {
+  const createFireworksBurst = useCallback(() => {
     if (!isVisible) return;
     
     const colors = [
@@ -93,7 +93,7 @@ const Fireworks: React.FC<FireworksProps> = ({ isVisible }) => {
         prev.filter(p => p.key.indexOf(timestamp.toString()) === -1)
       );
     }, 6000);
-  };
+  }, [isVisible]);
 
   useEffect(() => {
     if (isVisible) {
@@ -117,7 +117,7 @@ const Fireworks: React.FC<FireworksProps> = ({ isVisible }) => {
         intervalRef.current = null;
       }
     };
-  }, [isVisible]);
+  }, [isVisible, createFireworksBurst]);
 
   if (!isVisible) return null;
 

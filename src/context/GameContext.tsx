@@ -197,8 +197,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (gameState.gameMode === 'single' && gameState.currentPlayer === 'X' && !winner) {
       // Add a small delay for the AI move
       setTimeout(() => {
-        // Get the latest state to avoid stale state issues
-        const currentState = gameState;
+        // Using the latest board state
         const aiBoard = [...newBoard];
         const aiMoveIndex = getAIMove(aiBoard);
         
